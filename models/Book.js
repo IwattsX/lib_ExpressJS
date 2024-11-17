@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const bookSchema = new mongoose.Schema({
+    ISBN : {type : String, required: true},
     title: { type: String, required: true },
     author: { type: String, required: true },
     genre: {
@@ -8,7 +9,7 @@ const bookSchema = new mongoose.Schema({
         enum: ['fiction', 'non-fiction'],
         required: true,
     },
-    year: { type: Number, required: true },
+    is_checked_out : { type : Boolean, required: true},
 });
 
 module.exports = mongoose.model('Book', bookSchema);

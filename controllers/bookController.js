@@ -3,14 +3,16 @@ const Book = require('../models/Book');
 // Create a new book
 exports.createBook = async (req, res) => {
     try {
-        const { title, author, genre, year } = req.body;
-        const newBook = new Book({ title, author, genre, year });
+        const { ISBN, author, title, is_checked_out, genre} = req.body;
+        const newBook = new Book({ ISBN, author, title, is_checked_out, genre });
         await newBook.save();
         res.status(201).json(newBook);
     } catch (error) {
+        console.error('Error creating book:', error.message);
         res.status(500).json({ error: error.message });
     }
 };
+
 
 // Get all books
 exports.getAllBooks = async (req, res) => {

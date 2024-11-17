@@ -11,10 +11,11 @@ describe('Books API', () => {
     const res = await request(app)
       .post('/books')
       .send({
+        ISBN : "100203",
         title: 'The Great Gatsby',
         author: 'F. Scott Fitzgerald',
         genre: 'fiction',
-        year: 1925,
+        is_checked_out: true,
       })
       .expect(201); // Expecting a 201 status code for resource creation
 
@@ -24,7 +25,7 @@ describe('Books API', () => {
     expect(res.body.title).toBe('The Great Gatsby');
   });
 
-  // Test: Get all books
+  // // Test: Get all books
   it('should get all books', async () => {
     const res = await request(app)
       .get('/books')
@@ -34,7 +35,7 @@ describe('Books API', () => {
     expect(res.body.length).toBeGreaterThan(0);
   });
 
-  // Test: Get a specific book
+  // // Test: Get a specific book from endpoint
   it('should get a single book by ID', async () => {
     const res = await request(app)
       .get(`/books/${bookId}`)
@@ -44,15 +45,16 @@ describe('Books API', () => {
     expect(res.body.title).toBe('The Great Gatsby');
   });
 
-  // Test: Update a book
+  // // Test: Update a book
   it('should update a book', async () => {
     const res = await request(app)
       .put(`/books/${bookId}`)
       .send({
-        title: 'The Great Gatsby (Updated)',
+        ISBN : "100203",
+        title: 'The Great Gatsby',
         author: 'F. Scott Fitzgerald',
         genre: 'fiction',
-        year: 1926,
+        is_checked_out: false,
       })
       .expect(200); // Expecting a 200 status code for update
 
@@ -60,7 +62,7 @@ describe('Books API', () => {
     expect(res.body.year).toBe(1926);
   });
 
-  // Test: Delete a book
+  // // Test: Delete a book
   it('should delete a book', async () => {
     const res = await request(app)
       .delete(`/books/${bookId}`)
