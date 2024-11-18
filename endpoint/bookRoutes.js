@@ -6,10 +6,11 @@ const {
     updateBook,
     deleteBook,
 } = require('../controllers/bookController');
+const validateBooks = require('../middleware/validateBooks');
 
-router.post('/', createBook);
+router.post('/', validateBooks, createBook);
 router.get('/', getAllBooks);
-router.put('/:id', updateBook);
+router.put('/:id', validateBooks, updateBook);
 router.delete('/:id', deleteBook);
 
 module.exports = router;
