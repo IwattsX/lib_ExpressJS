@@ -23,7 +23,7 @@ app.get('/', (req, res)=>{
 // Routing
 app.use('/books', bookRoutes);
 app.use('/members', memberRoutes);
-app.use('/staff', staffRoutes);
+app.use('/staffs', staffRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

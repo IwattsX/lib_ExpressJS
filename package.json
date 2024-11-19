@@ -1,6 +1,7 @@
 {
   "scripts": {
     "test": "jest",
+    "OHT" : "jest --detectOpenHandles",
     "server": "node index.js"
   },
   "dependencies": {
