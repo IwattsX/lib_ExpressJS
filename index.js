@@ -9,7 +9,10 @@ const server = app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
 
-// Handle graceful shutdown
+/**
+ * disconnects the mongoDB connection only when the process is on termination
+ * @param {*} signal 
+ */
 const gracefulShutdown = async (signal) => {
     console.log(`Received ${signal}. Closing application...`);
     try {

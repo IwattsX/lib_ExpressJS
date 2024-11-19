@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+/**
+ * Creates a ORM schema for tables books
+ */
 const bookSchema = new mongoose.Schema({
     ISBN : {type : String, required: true, unique : true},
     title: { type: String, required: true },
