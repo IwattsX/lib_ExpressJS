@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const staffSchema = new mongoose.Schema({
-    id : { type : String, required : true, unique: true},
+    ID : { type : String, required : true, unique: true},
     name: { type: String, required: true },
 });
 

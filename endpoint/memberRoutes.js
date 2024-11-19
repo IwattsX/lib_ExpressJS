@@ -6,10 +6,11 @@ const {
     updateMember,
     deleteMember,
 } = require('../controllers/memberController');
+const validatePerson = require('../middleware/validatePerson');
 
-router.post('/', createMember);
+router.post('/', validatePerson, createMember);
 router.get('/', getAllMembers);
-router.put('/:id', updateMember);
+router.put('/:id', validatePerson, updateMember);
 router.delete('/:id', deleteMember);
 
 module.exports = router;

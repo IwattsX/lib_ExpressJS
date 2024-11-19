@@ -3,8 +3,9 @@ const Member = require('../models/Member');
 // Create a new member
 exports.createMember = async (req, res) => {
     try {
-        const { name, email } = req.body;
-        const newMember = new Member({ name, email });
+        console.log(res.body);
+        const { ID, name } = req.body;
+        const newMember = new Member({ ID, name });
         await newMember.save();
         res.status(201).json(newMember);
     } catch (error) {

@@ -2,15 +2,17 @@ const Staff = require('../models/Staff');
 
 // Create a new staff member
 exports.createStaff = async (req, res) => {
+    console.log(`Req body in create staff`, req.body); // Log the incoming request body
     try {
-        const { name, role, email } = req.body;
-        const newStaff = new Staff({ name, role, email });
-        await newStaff.save();
-        res.status(201).json(newStaff);
+        const { ID, name } = req.body; // Extract data from the request body
+        const newStaff = new Staff({ ID, name }); // Create a new staff object
+        await newStaff.save(); // Save to the database
+        res.status(201).json(newStaff); // Send the created staff object in the response
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message }); // Handle any errors
     }
 };
+
 
 // Get all staff
 exports.getAllStaff = async (req, res) => {

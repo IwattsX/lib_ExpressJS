@@ -7,9 +7,11 @@ const {
     deleteStaff,
 } = require('../controllers/staffController');
 
-router.post('/', createStaff);
+const validatePerson = require('../middleware/validatePerson');
+
+router.post('/', validatePerson, createStaff);
 router.get('/', getAllStaff);
-router.put('/:id', updateStaff);
+router.put('/:id', validatePerson, updateStaff);
 router.delete('/:id', deleteStaff);
 
 module.exports = router;
