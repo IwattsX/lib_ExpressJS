@@ -1,4 +1,3 @@
-const connectDB = require('./config/db');
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -9,8 +8,6 @@ const memberRoutes = require('./endpoint/memberRoutes');
 const staffRoutes = require('./endpoint/staffRoutes');
 const app = express();
 
-// Connect to Database
-connectDB();
 
 // Middleware
 app.use(express.json()); // For parsing JSON

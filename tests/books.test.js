@@ -1,8 +1,20 @@
 const request = require('supertest');
 require('dotenv').config()
 const app = require('../app'); // Assuming app.js exports your Express app
+const mongoose = require('mongoose');
+const connectDB = require('../config/db');
 
 describe('Books API', () => {
+
+  beforeAll(() => {
+    connectDB();
+  });
+  
+  afterAll(() => {
+    mongoose.disconnect();
+  });
+
+  
   
   let bookId;
 
